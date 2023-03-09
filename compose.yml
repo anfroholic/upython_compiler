@@ -1,0 +1,9 @@
+services:
+  esp_compiler:
+      build:
+        context: .
+        dockerfile: Dockerfile
+      container_name: esp_compiler
+      command: tail -F anything
+      # volumes:
+      #   - ./esp_compiler/esp-idf:/esp-idf

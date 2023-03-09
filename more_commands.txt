@@ -1,0 +1,13 @@
+
+
+export  PATH="/esp-idf/tools/:$PATH"
+
+cd esp-idf
+. ./export.sh
+
+
+
+
+
+
+
