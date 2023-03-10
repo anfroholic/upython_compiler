@@ -1,13 +1,18 @@
+this compiles v1.17
 
 
-export  PATH="/esp-idf/tools/:$PATH"
+docker exec -it esp_compiler bash 
+
+
+apt-get install git wget flex bison gperf python3 python3-pip python3-setuptools cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0 -y
 
 cd esp-idf
 . ./export.sh
-
-
-
-
-
-
+cd ..
+cd micropython
+git checkout cb8612b0c27854c58c6829c19439ea2623db55a3
+make -C mpy-cross
+cd ports/esp32
+make submodules
+make BOARD=GENERIC_SPIRAM
 
