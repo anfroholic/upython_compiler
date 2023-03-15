@@ -13,8 +13,8 @@ cd esp-idf
 . ./export.sh
 cd ..
 cd micropython
-git fetch origin 110790f9b454ce02c3532bae6542d1c997a8b280
-git checkout 110790f9b454ce02c3532bae6542d1c997a8b280
+git fetch origin 6921294ddfe49e2ef6862d1f12af345ff44cc902
+git checkout 6921294ddfe49e2ef6862d1f12af345ff44cc902
 make -C mpy-cross
 cd ports/esp32
 make submodules
