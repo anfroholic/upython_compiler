@@ -33,3 +33,6 @@ cd ports/esp32
 make submodules
 make BOARD=GENERIC_SPIRAM
 
+
+
+docker cp esp_compiler:/micropython/ports/esp32/build-GENERIC/firmware.bin C:\upy
