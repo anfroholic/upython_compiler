@@ -36,3 +36,15 @@ make BOARD=GENERIC_SPIRAM
 
 
 docker cp esp_compiler:/micropython/ports/esp32/build-GENERIC/firmware.bin C:\upy
+
+
+newest notes
+
+this compiles with above but is wrong version
+in anfro repo
+https://github.com/anfroholic/micropython
+6921294ddfe49e2ef6862d1f12af345ff44cc902
+
+
+https://github.com/lemariva/micropython-camera-driver
+d851677826d3b9f05dd1a23dd105d42de18177a4
