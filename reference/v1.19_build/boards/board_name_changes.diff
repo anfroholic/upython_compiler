@@ -1,0 +1,17 @@
+diff --git a/ports/esp32/boards/GENERIC/mpconfigboard.h b/ports/esp32/boards/GENERIC/mpconfigboard.h
+index 644807f78..4a69b0180 100644
+--- a/ports/esp32/boards/GENERIC/mpconfigboard.h
++++ b/ports/esp32/boards/GENERIC/mpconfigboard.h
+@@ -1,2 +1,2 @@
+-#define MICROPY_HW_BOARD_NAME "ESP32 module"
++#define MICROPY_HW_BOARD_NAME "Evezor Edge"
+ #define MICROPY_HW_MCU_NAME "ESP32"
+diff --git a/ports/esp32/boards/GENERIC_SPIRAM/mpconfigboard.h b/ports/esp32/boards/GENERIC_SPIRAM/mpconfigboard.h
+index a5982e47e..be8369fe3 100644
+--- a/ports/esp32/boards/GENERIC_SPIRAM/mpconfigboard.h
++++ b/ports/esp32/boards/GENERIC_SPIRAM/mpconfigboard.h
+@@ -1,2 +1,2 @@
+-#define MICROPY_HW_BOARD_NAME "ESP32 module (spiram)"
+-#define MICROPY_HW_MCU_NAME "ESP32"
++#define MICROPY_HW_BOARD_NAME "Evezor Edge"
++#define MICROPY_HW_MCU_NAME "ESP32 SPIRAM"

@@ -1,0 +1,46 @@
+commit 6921294ddfe49e2ef6862d1f12af345ff44cc902
+Author: Юрий Макаров <ym@teleportdoma.ru>
+Date:   Tue Oct 4 19:29:14 2022 +0300
+
+    ports/esp32/esp32_can: Add CAN bus support.
+    
+    CAN bus for esp32 controller.
+
+diff --git a/ports/esp32/main/CMakeLists.txt b/ports/esp32/main/CMakeLists.txt
+index fccfd6b7c..8ee761cd6 100644
+--- a/ports/esp32/main/CMakeLists.txt
++++ b/ports/esp32/main/CMakeLists.txt
+@@ -75,6 +75,7 @@ set(MICROPY_SOURCE_PORT
+     ${PROJECT_DIR}/mpnimbleport.c
+     ${PROJECT_DIR}/modsocket.c
+     ${PROJECT_DIR}/modesp.c
++    ${PROJECT_DIR}/esp32_can.c
+     ${PROJECT_DIR}/esp32_nvs.c
+     ${PROJECT_DIR}/esp32_partition.c
+     ${PROJECT_DIR}/esp32_rmt.c
+diff --git a/ports/esp32/modesp32.c b/ports/esp32/modesp32.c
+index 017db36e2..eedfc72bc 100644
+--- a/ports/esp32/modesp32.c
++++ b/ports/esp32/modesp32.c
+@@ -214,6 +214,9 @@ STATIC const mp_rom_map_elem_t esp32_module_globals_table[] = {
+     #endif
+     { MP_ROM_QSTR(MP_QSTR_idf_heap_info), MP_ROM_PTR(&esp32_idf_heap_info_obj) },
+ 
++    #if (MICROPY_HW_ENABLE_CAN) && (ESP_IDF_VERSION_MAJOR == 4) && (ESP_IDF_VERSION_MINOR >= 2)
++    { MP_ROM_QSTR(MP_QSTR_CAN), MP_ROM_PTR(&esp32_can_type) },
++    #endif
+     { MP_ROM_QSTR(MP_QSTR_NVS), MP_ROM_PTR(&esp32_nvs_type) },
+     { MP_ROM_QSTR(MP_QSTR_Partition), MP_ROM_PTR(&esp32_partition_type) },
+     { MP_ROM_QSTR(MP_QSTR_RMT), MP_ROM_PTR(&esp32_rmt_type) },
+diff --git a/ports/esp32/mpconfigport.h b/ports/esp32/mpconfigport.h
+index 957aa2e93..7391fb1d4 100644
+--- a/ports/esp32/mpconfigport.h
++++ b/ports/esp32/mpconfigport.h
+@@ -116,6 +116,7 @@
+ #ifndef MICROPY_HW_ENABLE_SDCARD
+ #define MICROPY_HW_ENABLE_SDCARD            (1)
+ #endif
++#define MICROPY_HW_ENABLE_CAN               (1)
+ #define MICROPY_HW_SOFTSPI_MIN_DELAY        (0)
+ #define MICROPY_HW_SOFTSPI_MAX_BAUDRATE     (ets_get_cpu_frequency() * 1000000 / 200) // roughly
+ #define MICROPY_PY_USSL                     (1)
